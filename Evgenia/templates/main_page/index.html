@@ -2,23 +2,19 @@
 
 {%block content%}
     <h1>Today's shedule</h1>
-    <table>
     {%for post in object_list%}
     <div class="col-md-6">
         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
           <div class="col p-4 d-flex flex-column position-static">
             <h3 class="mb-0">{{post.Subject}}</h3>
-            <div class="mb-1 text-muted">{{post.day_of_week}}</div>
-            <p class="card-text mb-auto">{{post.Teacher}}</p>
+            <div class="mb-1 text-muted">{{post.Teacher}}</div>
+            <p class="card-text mb-auto">{{post.day_of_week|cut:"1"|cut:"2"|cut:"3"|cut:"4"|cut:"5"|cut:"6"|cut:"7"|cut:"8"}}</p>
             <a class="stretched-link">Аудитория: {{post.Classes}}</a>
+            <p>ПАРА: {{post.time_of_day}}</p>
           </div>
         </div>
       </div>
     {%endfor%}
-    </table>
-
-
-
 {%endblock%} 
 
 
