@@ -16,7 +16,7 @@ class Articles(models.Model):
         choices = type_of_week_choices,
         default = even,
     )
-
+    
     Monday = '1Понедельник'
     Tuesday = '2Вторник'
     Wednesday = '3Среда'
