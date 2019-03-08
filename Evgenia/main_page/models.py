@@ -7,14 +7,16 @@ class Articles(models.Model):
 
     even = 'Четная'
     odd = 'Нечетная'
+    same = 'Еженедельно'
     type_of_week_choices = (
         (even, 'Четная'),
         (odd, 'Нечетная'),
+        (same, 'Еженедельно'),
     )
     type_of_week = models.CharField(
         max_length = 20,
         choices = type_of_week_choices,
-        default = even,
+        default = same,
     )
     
     Monday = '1Понедельник'
