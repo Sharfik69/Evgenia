@@ -6,7 +6,7 @@
     <div>
       <h3>Понедельник / <a id = "Monday"></a></h3>
       {%for post in object_list%}
-          {%if post.day_of_week == '1Понедельник'%}
+          {%if post.day_of_week == '1Понедельник' and post.Group_user == request.path|cut:"/groups/" %}
             {%include "main_page/includes/include_schedule.html"%}
           {%endif%}
       {%endfor%}
@@ -14,7 +14,7 @@
     <div>
         <h3>Вторник / <a id = "Tuesday"></a></h3>
         {%for post in object_list%}
-            {%if post.day_of_week == '2Вторник'%}
+            {%if post.day_of_week == '2Вторник' and post.Group_user == request.path|cut:"/groups/"%}
               {%include "main_page/includes/include_schedule.html"%}
             {%endif%}
         {%endfor%}
@@ -22,7 +22,7 @@
     <div>
         <h3>Среда / <a id = "Wednesday"></a></h3>
         {%for post in object_list%}
-            {%if post.day_of_week == '3Среда'%}
+            {%if post.day_of_week == '3Среда' and post.Group_user == request.path|cut:"/groups/"%}
               {%include "main_page/includes/include_schedule.html"%}
             {%endif%}
         {%endfor%}
@@ -30,7 +30,7 @@
     <div>
         <h3>Четверг / <a id = "Thursday"></a></h3>
         {%for post in object_list%}
-            {%if post.day_of_week == '4Четверг'%}
+            {%if post.day_of_week == '4Четверг' and post.Group_user == request.path|cut:"/groups/"%}
               {%include "main_page/includes/include_schedule.html"%}
             {%endif%}
         {%endfor%}
@@ -38,7 +38,7 @@
     <div>
         <h3>Пятница / <a id = "Friday"></a></h3>
         {%for post in object_list%}
-            {%if post.day_of_week == '5Пятница'%}
+            {%if post.day_of_week == '5Пятница' and post.Group_user == request.path|cut:"/groups/"%}
               {%include "main_page/includes/include_schedule.html"%}
             {%endif%}
         {%endfor%}
@@ -47,7 +47,7 @@
     <div>
         <h3>Суббота / <a id = "Saturday"></a></h3>
         {%for post in object_list%}
-            {%if post.day_of_week == '6Суббота'%}
+            {%if post.day_of_week == '6Суббота' and post.Group_user == request.path|cut:"/groups/"%}
               {%include "main_page/includes/include_schedule.html"%}
             {%endif%}
         {%endfor%}
@@ -58,7 +58,7 @@
         var w = week || 1, n = day || 1, y = year || new Date().getFullYear();
         var d = new Date(y , 0, 7 * w);
         d.setDate(d.getDate() - (d.getDay() || 7) + n);
-        return d.getDate() + '.' + (d.getMonth() + 1) + '.' +(d.getFullYear());
+        return (d.getDate() < 10 ? '0' + d.getDate() : d.getDate()) + '.' + (d.getMonth() < 10 ? '0' + (d.getMonth() + 1) : d.getMonth()) + '.' +(d.getFullYear());
       }
 
       Date.prototype.getWeek = function() {

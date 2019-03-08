@@ -1,10 +1,13 @@
 from django.db import models
 
 class Articles(models.Model):
+    Group_user = models.CharField(max_length = 15, default = '')
+
     Subject = models.CharField(max_length = 120)
-
+    
+    
     Teacher = models.CharField(max_length = 120)
-
+    
     even = 'Четная'
     odd = 'Нечетная'
     same = 'Еженедельно'
