@@ -1,8 +1,16 @@
 {% extends "main_page/wrapper.html" %}
 
 {%block content%}
-    
-    <h1>Today's shedule</h1>
+    {%if request.path|slice:'10:' == '/teachers/'%}
+      <h1>Расписание преподавателя {{request.path|cut:"/teachers/"}}</h1>
+    {%else%}
+      <h1>Расписание для группы {{request.path|cut:"/groups/"}}</h1>
+    {%endif%}
+
+
+
+
+
     <div>
       <h3>Понедельник / <a id = "Monday"></a></h3>
       {%for post in object_list%}
@@ -54,6 +62,18 @@
     </div>
     
     <script>
+      function current_day(x)
+      {
+          var Cur = new Date();
+          Cur.setDate(Cur.getDate() + x);
+          alert( Cur.getDay());
+      }
+
+
+
+
+
+
       function getDayInWeek (week,day,year) {
         var w = week || 1, n = day || 1, y = year || new Date().getFullYear();
         var d = new Date(y , 0, 7 * w);
@@ -74,8 +94,9 @@
       document.getElementById("Thursday").innerHTML = getDayInWeek(weekNumber - 1, 4, new Date().getFullYear());
       document.getElementById("Friday").innerHTML = getDayInWeek(weekNumber - 1, 5, new Date().getFullYear());
       document.getElementById("Saturday").innerHTML = getDayInWeek(weekNumber - 1, 6, new Date().getFullYear());
-
     </script>
+    
+
     
 {%endblock%} 
 
